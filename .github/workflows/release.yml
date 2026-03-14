@@ -26,12 +26,12 @@ jobs:
           git-user-email: "github-actions[bot]@users.noreply.github.com"
 
       - name: Push tag
-        run: git push origin "v${{ steps.release.outputs.version }}"
+        run: git push origin "${{ steps.release.outputs.version }}"
 
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${{ steps.release.outputs.version }}" \
-            --title "v${{ steps.release.outputs.version }}" \
+          gh release create "${{ steps.release.outputs.version }}" \
+            --title "${{ steps.release.outputs.version }}" \
             --generate-notes
